@@ -12,8 +12,9 @@ module BstTop
       end
 
       it 'Sets parents & child nodes to nil' do
-        expect(Node.new(5).child_node).to eq nil
+        expect(Node.new(5).right_node).to eq nil
         expect(Node.new(5).parent_node).to eq nil
+        expect(Node.new(5).left_node).to eq nil
       end
     end
   end
