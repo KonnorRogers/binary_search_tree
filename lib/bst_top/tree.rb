@@ -3,32 +3,40 @@ module BstTop
   class Tree
     attr_reader :root
 
+    def initialize
+      @root = Node.new
+    end
+
     def build_tree(array)
-      create_nodes(array)
+      @root.value = array.shift if @root.value.nil?
 
-      @root = array.first
+      make_nodes(array)
 
-      create_children(array)
+      array.each do |element|
+        set_parent_and_children(element, @root)
+      end
     end
 
     def create_nodes(array)
       array.map! { |value| Node.new(value) }
     end
 
-    def create_children(array)
-      index = 0
-
-      while index < array.size
-        node = array[index]
-        compared_node = array[index + 1]
-
-        if compared_node.value > node.value
-          node.right_node = compared_node
+    # Uses recursion to traverse the tree
+    def set_parent_and_children(child, node)
+      if child.value <= node.value
+        if node.left.nil?
+          node.left = child
+          child.parent = node
         else
-          node.left_node = compared_node
+          node = node.left
+          create_node(element, node)
         end
-
-        index += 1
+      elsif node.right.nil?
+        node.right = child
+        child.parent = node
+      else
+        node = node.right
+        create_node(child, node)
       end
     end
   end

@@ -3,13 +3,10 @@ require 'bst_top/tree'
 
 module BstTop
   RSpec.describe Tree do
-    array = [1, 2, 3, 4, 5, 6]
-    array2 = [7, 3, 4, 10, 20, 5]
-
-    context "#build_tree" do
+    context '#build_tree' do
       it 'sets the root to the first value' do
         tree = Tree.new
-        tree.build_tree(array2)
+        tree.build_tree([7, 5, 4, 3, 2])
 
         expect(tree.root.value).to eq 7
       end
@@ -25,6 +22,15 @@ module BstTop
       end
     end
 
-    context '#create_children(array)'
+    context '#set_parent_and_children(array)' do
+      it 'Sets the children and parent nodes' do
+        tree = Tree.new
+
+        tree.build_tree([7, 5, 10, 2, 12])
+
+        expect(tree.root.right_node.value).to eq 10
+        expect(tree.root.left_node.value).to eq 5
+      end
+    end
   end
 end
