@@ -92,7 +92,6 @@ module BstTop
     end
     
     def dfs_recursive(target_value, node = @root)
-      p node.value
       #base case
       return node if node.value == target_value
       
