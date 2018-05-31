@@ -1,13 +1,13 @@
 # Binary Search Tree module
 module BstTop
   class Node
-    attr_accessor :parent_node, :right_node, :left_node, :value
+    attr_accessor :parent, :right_child, :left_child, :value
 
-    def initialize(value)
+    def initialize(value = nil)
       @value = value
-      @parent_node = nil
-      @right_node = nil
-      @left_node = nil
+      @parent = nil
+      @right_child = nil
+      @left_child = nil
     end
   end
 end
